@@ -35,6 +35,7 @@ public class Logic {
                     break;
                 }
             }
+            checkPegLand(peg1, peg2);
 
             System.out.print("\nPlayer 2's turn. Enter 'roll' to roll the dice: ");
             String userInput2 = scan.nextLine();
@@ -52,10 +53,26 @@ public class Logic {
                     break;
                 }
             }
-
+            checkPegLand(peg2, peg1);
             System.out.println();
 
 
+        }
+
+        if (peg1Win == true) {
+            System.out.println("Congratulations Player 1! You won the game!");
+        }
+        else if (peg2Win == true) {
+            System.out.println("Congratulations Player 1! You won the game!");
+        }
+
+
+    }
+
+    public void checkPegLand(Peg peg1, Peg peg2) {
+        if (peg1.getPosition() == peg2.getPosition() && peg1.getPosition() != 0) {
+            System.out.println(peg1.getName() + " has landed on " + peg2.getName() + "'s spot! " + peg2.getName() + " goes back to the start!");
+            peg2.moveToStart();
         }
     }
 }
